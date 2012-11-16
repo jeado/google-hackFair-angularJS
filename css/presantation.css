@@ -241,7 +241,7 @@ body     { pointer-events: none; }
 #controller li{
     list-style: disc;
     font-size: 25px;
-    line-height: 1;
+    line-height: 1.5;
 }
 
 #controller img{
@@ -353,7 +353,7 @@ body     { pointer-events: none; }
 
 /* it's in 3D */
 
-#its-in-3d p {
+#KAUG-in-facebook p {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style:    preserve-3d; /* Y U need this Firefox?! */
     -ms-transform-style:     preserve-3d;
@@ -361,7 +361,7 @@ body     { pointer-events: none; }
     transform-style:         preserve-3d;
 }
 
-#its-in-3d span{
+#KAUG-in-facebook span{
     display: inline-block;
     -webkit-transform: translateZ(40px);
     -moz-transform:    translateZ(40px);
@@ -376,7 +376,7 @@ body     { pointer-events: none; }
     transition:         0.5s;
 }
 
-#its-in-3d .korea {
+#KAUG-in-facebook .korea {
     -webkit-transform: translateZ(-80px);
     -moz-transform:    translateZ(-80px);
     -ms-transform:     translateZ(-80px);
@@ -384,7 +384,7 @@ body     { pointer-events: none; }
     transform:         translateZ(-80px);
 }
 
-#its-in-3d .AngularJS {
+#KAUG-in-facebook .AngularJS {
     -webkit-transform: translateZ(20px);
     -moz-transform:    translateZ(20px);
     -ms-transform:     translateZ(20px);
@@ -392,7 +392,7 @@ body     { pointer-events: none; }
     transform:         translateZ(20px);
 }
 
-#its-in-3d .User {
+#KAUG-in-facebook .User {
     -webkit-transform: translateZ(-40px);
     -moz-transform:    translateZ(-40px);
     -ms-transform:     translateZ(-40px);
@@ -400,7 +400,7 @@ body     { pointer-events: none; }
     transform:         translateZ(-40px);
 }
 
-#its-in-3d .Group {
+#KAUG-in-facebook .Group {
     -webkit-transform: translateZ(60px);
     -moz-transform:    translateZ(60px);
     -ms-transform:     translateZ(60px);
@@ -408,7 +408,7 @@ body     { pointer-events: none; }
     transform:         translateZ(60px);
 }
 
-#its-in-3d .in {
+#KAUG-in-facebook .in {
     -webkit-transform: translateZ(-10px);
     -moz-transform:    translateZ(-10px);
     -ms-transform:     translateZ(-10px);
@@ -416,7 +416,7 @@ body     { pointer-events: none; }
     transform:         translateZ(-10px);
 }
 
-#its-in-3d .footnote {
+#KAUG-in-facebook .footnote {
     font-size: 32px;
 
     -webkit-transform: translateZ(-10px);
@@ -426,8 +426,8 @@ body     { pointer-events: none; }
     transform:         translateZ(-10px);
 }
 
-#its-in-3d.present span,
-#its-in-3d.present b {
+#KAUG-in-facebook.present span,
+#KAUG-in-facebook.present b {
     -webkit-transform: translateZ(0px);
     -moz-transform:    translateZ(0px);
     -ms-transform:     translateZ(0px);
