@@ -62,10 +62,10 @@
     <div id="coding" class="step" data-x="0" data-rotate="180" data-y="0" data-scale="1">
         <p>NOW <b>Coding</b> <span class="thoughts">TIME</span></p>
     </div>
+
     <div id="todo" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
-
-        <h1>Things To Do</h1>
-
+        <h1>{{name}}`s Things To Do</h1>
+        
         <p>
             Remaining <strong>XXX</strong> of <strong>XXX</strong>
             [ <a href="">archive</a> ]
@@ -171,16 +171,17 @@
         
         <p>
             Remaining <strong>{{remain()}}</strong> of <strong>{{todos.length}}</strong>
-            [ <a href="">archive</a> ]
+            [ <a href="" ng-click="archive()">archive</a> ]
         </p>
 
         <ul class="unstyled">
-            <li ng-repeat="todo in todos"><input type="checkbox" ng-model="todo.done" ng-click="check(todo)">{{todo.text}}</li>
+            <li ng-repeat="todo in todos"><input ng-click="check(todo)" type="checkbox" ng-model="todo.done">{{todo.text}}</li>
         </ul>
 
         <form name="todoForm" action="">
-            <input name="newTodo" type="text">
-            
+            <input name="newTodo" type="text" ng-maxlength="5" ng-model="newTaskText">
+            <span ng-show="todoForm.newTodo.$error.maxlength">Item text is too long!</span>
+            <button id="add" class="btn btn-primary" ng-click="add(newTaskText)" ng-disabled="!newTaskText">add</button>
         </form>
     </div>
 
