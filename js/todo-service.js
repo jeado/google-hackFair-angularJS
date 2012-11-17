@@ -3,7 +3,7 @@
  *
  * Description
  */
-angular.module('todo-service', []).
+angular.module('log-service', []).
 	value('apiKey','50728d46e4b088be4c29ea02').
 	factory('logger',function($http,apiKey) {
 		function Logger () {
@@ -49,4 +49,4 @@ angular.module('todo-service', []).
 		};
 	});
 
-angular.bootstrap($('#todo-service'),['todo-service']);
+angular.bootstrap($('#log-service'),['log-service']);

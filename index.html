@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="css/presantation.css"/>
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/todo.css"/>
-    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script> -->
+    <script type="text/javascript" src="js/libs/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/libs/underscore.js"></script>
     <script type="text/javascript" src="js/libs/angular.js"></script>
 
@@ -60,8 +62,20 @@
     <div id="coding" class="step" data-x="0" data-rotate="180" data-y="0" data-scale="1">
         <p>NOW <b>Coding</b> <span class="thoughts">TIME</span></p>
     </div>
+    <script type="text/javascript">
+        function todoCtrl($scope) {
+            var userNmae = "jeado";
+            var todos = [
+                { text: 'task 1', done : false},
+                { text: 'task 2', done : true},
+                { text: 'task 3', done : false},
+                { text: 'task 4', done : false}
+            ];
 
-    <div id="todo" class="step" data-x="4025" data-y="4000" data-z="-1000"data-rotate="360" data-scale="2">
+            $scope.name = userNmae;
+        };
+    </script>
+    <div ng-app id="todo" ng-controller="todoCtrl" class="step" data-x="4025" data-y="4000" data-z="-1000"data-rotate="360" data-scale="2">
         <h1>{{name}}`s Things To Do</h1>
         
         <p>
@@ -163,7 +177,7 @@
     </div>
 
     <script type="text/javascript" src="js/todo-service.js"></script>
-    <div id="todo-service" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
+    <div id="log-service" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
 
         <h1>{{name}}`s Things To Do</h1>
         

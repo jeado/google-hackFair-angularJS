@@ -189,14 +189,14 @@ body     { pointer-events: none; }
 }
 
 /* TODO APP */
-#todo, #todo-service {
+#todo, #log-service {
     font-size: 30px;
 }
-#todo li, #todo-service li{
+#todo li, #log-service li{
     line-height: 1;
 }
 
-#todo h1, #todo-service h1{
+#todo h1, #log-service h1{
     font-size: 40px;
     
     -webkit-transform: translateZ(50px);
