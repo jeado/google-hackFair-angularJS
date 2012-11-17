@@ -189,14 +189,14 @@ body     { pointer-events: none; }
 }
 
 /* TODO APP */
-#todo {
+#todo, #todo-service {
     font-size: 30px;
 }
-#todo li{
+#todo li, #todo-service li{
     line-height: 1;
 }
 
-#todo h1{
+#todo h1, #todo-service h1{
     font-size: 40px;
     
     -webkit-transform: translateZ(50px);
@@ -205,6 +205,41 @@ body     { pointer-events: none; }
     -o-transform:      translateZ(50px);
     transform:         translateZ(50px);   
 }
+
+/* log graph */
+#log-graph {
+    font-size: 30px;
+}
+
+#log-graph button{
+    width: 100px;
+}
+
+#log-graph .toolbar{
+    text-align: right;
+    border-bottom: 1px solid #000;
+}
+
+#log-graph text{
+    font-size: 20px;
+}
+
+#log-graph .chart .bar {
+    stroke: white;
+    fill: steelblue;
+}
+
+#log-graph .axis path,
+#log-graph .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#log-graph .x.axis path {
+  display: none;
+}
+
 /* Expresions */
 #expression {
     font-size: 30px;
@@ -249,9 +284,23 @@ body     { pointer-events: none; }
     margin: 20px auto;
 }
 
+/* di */
+
+#di{
+    font-family: 'NanumPen';
+    padding-right: 90px;
+    font-size: 60px;
+}
+
+/* directive */
+
+#directive{
+    font-family: 'NanumPen';
+    padding-right: 90px;
+    font-size: 60px;
+}
 
 /* coding time */
-
 #coding {
     width: 600px;
     text-align: center;
@@ -270,13 +319,13 @@ body     { pointer-events: none; }
     line-height: 150px;
 }
 
-/* imagination */
+/* useAngularJS */
 
-#imagination {
+#useAngularJS {
     width: 600px;
 }
 
-#imagination .imagination {
+#useAngularJS .useAngularJS {
     font-size: 78px;
 }
 

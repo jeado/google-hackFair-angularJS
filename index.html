@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="css/presantation.css"/>
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/todo.css"/>
-
-   <!-- <script src="http://code.jquery.com/jquery-1.8.2.js"></script> -->
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="js/libs/underscore.js"></script>
     <script type="text/javascript" src="js/libs/angular.js"></script>
+
 </head>
 
 <body class="impress-not-supported">
@@ -59,7 +61,7 @@
         <p>NOW <b>Coding</b> <span class="thoughts">TIME</span></p>
     </div>
 
-    <div id="todo" class="step" data-x="4025" data-y="5325" data-z="-1000"data-rotate="360" data-scale="6">
+    <div id="todo" class="step" data-x="4025" data-y="4000" data-z="-1000"data-rotate="360" data-scale="2">
         <h1>{{name}}`s Things To Do</h1>
         
         <p>
@@ -130,21 +132,21 @@
         <img src="images/scopes.png" width="800" alt="">
     </div>
 
-    <div id="model" class="step" data-x="-3500" data-y="5100" data-rotate="90" data-scale="2">
+    <div id="model" class="step" data-x="-1500" data-y="2000" data-z="200" data-rotate-x="-50" data-rotate="0" data-scale="2">
         <p>
             <b>The model</b> is the data which is used merged with the template to produce the view. 
         </p>
         <img src="images/concepts-model.png" width="800" alt="">
     </div>
 
-    <div id="view" class="step" data-z="200" data-x="-1500" data-y="2000" data-rotate-x="-50" data-rotate="0" data-scale="2">
+    <div id="view" class="step" data-x="-1000" data-y="5000" data-z="-100" data-rotate-y="-10" data-rotate="0" data-scale="2">
         <p>
             <b>The view</b> begins its life as a template, it is merged with the model and finally rendered into the browser DOM.
         </p>
         <img src="images/concepts-view.png" width="500" alt="">
     </div>
 
-    <div id="controller" class="step" data-z="-100" data-x="-1000" data-y="5000" data-rotate-y="-10" data-rotate="0" data-scale="2">
+    <div id="controller" class="step" data-x="-3500" data-y="5100" data-rotate="90" data-scale="2">
         <p><b>Controller`s</b> job is to construct the model and publish it to the view along with callback methods.</p>
         <ul>
             <li>Setting up the initial state of a scope object</li>
@@ -154,8 +156,56 @@
         <img src="images/concepts-controller.png" width="700" alt="">
     </div>
 
-    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
-        <p>No more <b>Spagetti Code</b><br/><b class="imagination">Use AngularJS</b></p>
+    <div id="di" class="step" data-x="-3500" data-y="2000" data-rotate="90" data-scale="2">
+        <p>
+           Let`s make a log <b>service</b> when task is done!
+        </p>
+    </div>
+
+    <script type="text/javascript" src="js/todo-service.js"></script>
+    <div id="todo-service" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
+
+        <h1>{{name}}`s Things To Do</h1>
+        
+        <p>
+            Remaining <strong>{{remain()}}</strong> of <strong>{{todos.length}}</strong>
+            [ <a href="">archive</a> ]
+        </p>
+
+        <ul class="unstyled">
+            <li ng-repeat="todo in todos"><input type="checkbox" ng-model="todo.done" ng-click="check(todo)">{{todo.text}}</li>
+        </ul>
+
+        <form name="todoForm" action="">
+            <input name="newTodo" type="text">
+            
+        </form>
+    </div>
+
+    <div id="directive" class="step" data-x="-3500" data-y="0" data-rotate="90" data-scale="1">
+        <p>
+           Now, Let`s make a graph using <b>directive</b> in AngularJS!
+        </p>
+    </div>
+
+    <script type="text/javascript" src="js/todo-service.js"></script>
+    <div id="log-graph" ng-controller="graphCtrl" class="step" data-x="4025" data-y="6200" data-z="-1000"data-rotate="360" data-scale="2">
+
+        <h1>{{name}}`s 일별 테스크 완료 횟 수</h1>
+
+        <div class="toolbar">
+            <button class="btn btn-primary" ng-click="getData()">조회</button>
+        </div>
+
+        <bar-graph val="data"></bar-graph>
+
+        <pre>{{data}}</pre>
+
+    </div>
+    <script type="text/javascript" src="js/todo-graph.js"></script>
+
+    <div id="useAngularJS" class="step" data-x="6700" data-y="-300" data-scale="6">
+        <p>No more <b>Spagetti Code</b><br/><b class="useAngularJS">Use AngularJS</b></p>
     </div>
 
     <div id="source" class="step" data-x="6500" data-y="2000" data-rotate="20" data-scale="4">
