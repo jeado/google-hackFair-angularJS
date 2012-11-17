@@ -62,61 +62,25 @@
     <div id="coding" class="step" data-x="0" data-rotate="180" data-y="0" data-scale="1">
         <p>NOW <b>Coding</b> <span class="thoughts">TIME</span></p>
     </div>
-    <script type="text/javascript">
-        function todoCtrl($scope) {
-            var userNmae = "jeado";
-            var todos = [
-                { text: 'task 1', done : false},
-                { text: 'task 2', done : true},
-                { text: 'task 3', done : false},
-                { text: 'task 4', done : false}
-            ];
+    <div id="todo" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
 
-            $scope.name = userNmae;
-            $scope.todos = todos;
+        <h1>Things To Do</h1>
 
-            $scope.remain = function() {
-                return _.reduce($scope.todos,function(p,n) {
-                    return (n.done === false) ? p+1 : p;
-                },0)
-            };
-
-            $scope.add = function(text) {
-                var newTask = {
-                    text: text,
-                    done: false
-                }
-                $scope.todos.push(newTask);
-                $scope.newTaskText = '';
-            };
-
-            $scope.archive = function() {
-                $scope.todos = _.filter($scope.todos,function(item) {
-                    return (item.done === false) ? true : false;
-                });
-            };
-        };
-    </script>
-    <div ng-app id="todo" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
-        <h1>{{name}}`s Things To Do</h1>
-        
         <p>
-            Remaining <strong>{{remain()}}</strong> of <strong>{{todos.length}}</strong>
-            [ <a href="" ng-click="archive()">archive</a> ]
+            Remaining <strong>XXX</strong> of <strong>XXX</strong>
+            [ <a href="">archive</a> ]
         </p>
 
         <ul class="unstyled">
-            <li ng-repeat="todo in todos"><input type="checkbox" ng-model="todo.done">{{todo.text}}</li>
+            <li><input type="checkbox">task 1</li>
+            <li><input type="checkbox">task 2</li>
+            <li><input type="checkbox">task 2</li>
         </ul>
 
-        <form name="todoForm" action="">
-            <input name="newTodo" type="text" ng-maxlength="5" ng-model="newTaskText">
-            <span ng-show="todoForm.newTodo.$error.maxlength">Item text is too long!</span>
-            <button id="add" class="btn btn-primary" ng-click="add(newTaskText)" ng-disabled="!newTaskText">add</button>
+        <form action="">
+            <input type="text">
+            <button id="add" class="btn btn-primary">add</button>
         </form>
-        <pre>
-            {{todos}}
-        </pre>
     </div>
 
     <div id="expression" class="step" data-x="2500" data-y="-1100" data-rotate="270" data-scale="4">
