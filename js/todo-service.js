@@ -32,16 +32,38 @@ angular.module('log-service', []).
 		return new Logger();
 	}).
 	controller('todoCtrl',function($scope, logger) {
-		var userName = "jeado",
-				todos = [
-					{ text: 'task 1', done : false},
-					{ text: 'task 2', done : true},
-					{ text: 'task 3', done : false},
-					{ text: 'task 4', done : false}
-				];
+		var userName = "jeado";
+    var todos = [
+        { text: 'task 1', done : false},
+        { text: 'task 2', done : true},
+        { text: 'task 3', done : false},
+        { text: 'task 4', done : false}
+    ];
 
-		$scope.name = userName;
-		$scope.todos = todos;
+    $scope.name = userName;
+    $scope.todos = todos;
+
+    $scope.remain = function() {
+        return _.reduce($scope.todos,function(p,n) {
+            return (n.done === false) ? p+1 : p;
+        },0);
+    };
+
+    $scope.add = function(text) {
+        var newTask = {
+            text: text,
+            done: false
+        };
+        
+        $scope.todos.push(newTask);
+        $scope.newTaskText = '';
+    };
+
+    $scope.archive = function() {
+        $scope.todos = _.filter($scope.todos,function(item) {
+            return (item.done === false) ? true : false;
+        });
+    };
 
 		$scope.check = function(todo) {
 			//var logger = new Logger();
