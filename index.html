@@ -73,26 +73,50 @@
             ];
 
             $scope.name = userNmae;
+            $scope.todos = todos;
+
+            $scope.remain = function() {
+                return _.reduce($scope.todos,function(p,n) {
+                    return (n.done === false) ? p+1 : p;
+                },0)
+            };
+
+            $scope.add = function(text) {
+                var newTask = {
+                    text: text,
+                    done: false
+                }
+                $scope.todos.push(newTask);
+                $scope.newTaskText = '';
+            };
+
+            $scope.archive = function() {
+                $scope.todos = _.filter($scope.todos,function(item) {
+                    return (item.done === false) ? true : false;
+                });
+            };
         };
     </script>
-    <div ng-app id="todo" ng-controller="todoCtrl" class="step" data-x="4025" data-y="4000" data-z="-1000"data-rotate="360" data-scale="2">
+    <div ng-app id="todo" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
         <h1>{{name}}`s Things To Do</h1>
         
         <p>
-            Remaining <strong>XXX</strong> of <strong>XXX</strong>
-            [ <a href="">archive</a> ]
+            Remaining <strong>{{remain()}}</strong> of <strong>{{todos.length}}</strong>
+            [ <a href="" ng-click="archive()">archive</a> ]
         </p>
 
         <ul class="unstyled">
-            <li><input type="checkbox">task 1'</li>
-            <li><input type="checkbox">task 2'</li>
-            <li><input type="checkbox">task 3'</li>
+            <li ng-repeat="todo in todos"><input type="checkbox" ng-model="todo.done">{{todo.text}}</li>
         </ul>
 
         <form name="todoForm" action="">
-            <input name="newTodo" type="text">
-            <button id="add" class="btn btn-primary">add</button>
+            <input name="newTodo" type="text" ng-maxlength="5" ng-model="newTaskText">
+            <span ng-show="todoForm.newTodo.$error.maxlength">Item text is too long!</span>
+            <button id="add" class="btn btn-primary" ng-click="add(newTaskText)" ng-disabled="!newTaskText">add</button>
         </form>
+        <pre>
+            {{todos}}
+        </pre>
     </div>
 
     <div id="expression" class="step" data-x="2500" data-y="-1100" data-rotate="270" data-scale="4">
@@ -177,7 +201,7 @@
     </div>
 
     <script type="text/javascript" src="js/todo-service.js"></script>
-    <div id="log-service" ng-controller="todoCtrl" class="step" data-x="4025" data-y="5100" data-z="-1000"data-rotate="360" data-scale="2">
+    <div id="log-service" ng-controller="todoCtrl" class="step" data-x="4025" data-y="6200" data-z="-1000"data-rotate="360" data-scale="2">
 
         <h1>{{name}}`s Things To Do</h1>
         
@@ -203,7 +227,7 @@
     </div>
 
     <script type="text/javascript" src="js/todo-service.js"></script>
-    <div id="log-graph" ng-controller="graphCtrl" class="step" data-x="4025" data-y="6200" data-z="-1000"data-rotate="360" data-scale="2">
+    <div id="log-graph" ng-controller="graphCtrl" class="step" data-x="4025" data-y="7300" data-z="-1000"data-rotate="360" data-scale="2">
 
         <h1>{{name}}`s 시간별 테스크 완료 횟 수</h1>
 

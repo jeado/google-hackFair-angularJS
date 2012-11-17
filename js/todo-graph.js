@@ -35,8 +35,8 @@ angular.module('log-graph', []).
 					nomalizedValue = _.map(_.groupBy(newVal,function(val) {
 															return val.time;
 														}),function(v,k) {
-															return { time: k, num : _.reduce(v,function(p,n,m) {
-															return m+1;
+															return { time: k, num : _.reduce(v,function(p,n) {
+															return p+1;
 															},0)};
 														});
 
