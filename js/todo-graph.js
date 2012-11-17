@@ -23,7 +23,8 @@ angular.module('log-graph', []).
 
 				scope.$watch('val', function(newVal, oldVal) {
 					var nomalizedValue =[],
-							x, y, xAxis, yAxis;
+							x, y, xAxis, yAxis,
+							formatCount = d3.format("02d");
 
 					if(!newVal){
 						return;
@@ -40,8 +41,8 @@ angular.module('log-graph', []).
 														});
 
 					x = d3.scale.ordinal()
-						.domain(_.map(nomalizedValue,function(d) {return d.time;}))
-						.rangeBands([0, width]);
+						.domain(_.map(nomalizedValue,function(d) {return d.time+"시";}))
+						.rangeBands([0, width], 0.05);
 
 					y = d3.scale.linear()
 						.domain([0, d3.max(_.map(nomalizedValue,function(d) {return d.num;}))])
@@ -53,7 +54,8 @@ angular.module('log-graph', []).
 
 					yAxis = d3.svg.axis()
 						.scale(y)
-						.orient("left");
+						.orient("left")
+						.tickFormat(formatCount);
 
 					chart.append("g")
 						.attr("class", "x axis")
@@ -78,21 +80,22 @@ angular.module('log-graph', []).
 						.attr("width", x.rangeBand())
 						.attr("y", function(d) { return y(d.num); })
 						.attr("height", function(d) {return height - y(d.num); });
-				});
+				},true);
 			}
 		};
 	}).
-	controller('graphCtrl',function($scope, $http) {
-		var userName = "jeado",
-				data = [];
+	controller('graphCtrl',function($scope, $http, apiKey) {
+		var userName = "jeado";
+				data = null;
 
 		$scope.name = userName;
+		$scope.data = null;
 
 		$scope.getData = function() {
 			$http.get('https://api.mongolab.com/api/1/databases/angular-todo/collections/logs',
 			{
 				params: {
-					apiKey : '50728d46e4b088be4c29ea02'
+					apiKey : apiKey
 				}
 			})
 			.success(function(data) {
@@ -100,6 +103,22 @@ angular.module('log-graph', []).
 			})
 			.error(function(data, status) {
 				throw Error(status);
+			});
+		};
+
+		$scope.addSomeData = function() {
+			var smapleData = [
+				{ "userName" : "jeado" , "text" : "task 3" , "time" : _.random(0,23)},
+				{ "userName" : "jeado" , "text" : "task 4" , "time" : _.random(0,23)},
+				{ "userName" : "jeado" , "text" : "task 5" , "time" : _.random(0,23)},
+				{ "userName" : "jeado" , "text" : "task 2" , "time" : _.random(0,23)},
+				{ "userName" : "jeado" , "text" : "task 20" , "time" : _.random(0,23)},
+				{ "userName" : "jeado" , "text" : "task 12" , "time" : _.random(0,23)}
+			];
+
+			angular.forEach(smapleData, function(value, key){
+				if($scope.data === null) $scope.data = [];
+				$scope.data.push(value);
 			});
 		};
 	});

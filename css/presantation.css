@@ -211,6 +211,10 @@ body     { pointer-events: none; }
     font-size: 30px;
 }
 
+#log-graph button.add-random-data{
+    width: 150px;
+}
+
 #log-graph button{
     width: 100px;
 }
@@ -221,7 +225,7 @@ body     { pointer-events: none; }
 }
 
 #log-graph text{
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #log-graph .chart .bar {

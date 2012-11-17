@@ -4,7 +4,8 @@
  * Description
  */
 angular.module('todo-service', []).
-	factory('logger',function($http) {
+	value('apiKey','50728d46e4b088be4c29ea02').
+	factory('logger',function($http,apiKey) {
 		function Logger () {
 
 		}
@@ -14,10 +15,10 @@ angular.module('todo-service', []).
 			$http.post('https://api.mongolab.com/api/1/databases/angular-todo/collections/logs',{
 				userName : userName,
 				text : text,
-				time : currentDate.getHours()+':'+currentDate.getMinutes()
+				time : currentDate.getHours()
 			},{
 				params: {
-					apiKey : '50728d46e4b088be4c29ea02'
+					apiKey : apiKey
 				}
 			})
 			.success(function(data) {
@@ -33,11 +34,11 @@ angular.module('todo-service', []).
 	controller('todoCtrl',function($scope, logger) {
 		var userName = "jeado",
 				todos = [
-			{ text: 'task 1', done : false},
-			{ text: 'task 2', done : true},
-			{ text: 'task 3', done : false},
-			{ text: 'task 4', done : false}
-		];
+					{ text: 'task 1', done : false},
+					{ text: 'task 2', done : true},
+					{ text: 'task 3', done : false},
+					{ text: 'task 4', done : false}
+				];
 
 		$scope.name = userName;
 		$scope.todos = todos;
